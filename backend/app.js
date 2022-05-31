@@ -7,11 +7,15 @@ const sauceRoutes = require('./routes/sauce')
 const userRoutes = require('./routes/user');
 
 const app = express();
+const cors = require('cors');
+
 
 //Intercept all requests that have json content type
 app.use(express.json());
 
 //Allows any request to our API
+app.use(cors());
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');

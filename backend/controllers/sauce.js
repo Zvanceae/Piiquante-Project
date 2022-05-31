@@ -1,4 +1,4 @@
-const sauce = require('../models/sauce')
+const sauce = require('../models/sauce');
 const fs = require('fs');
 
 exports.createSauce = (req, res, next) => {
@@ -17,7 +17,7 @@ exports.createSauce = (req, res, next) => {
       usersLiked: req.body.sauce.usersLiked,
       usersDisliked: req.body.sauce.usersDisliked
       });
-  thing.save().then(
+  sauce.save().then(
     () => {
       res.status(201).json({
         message: 'Post saved successfully!'
@@ -37,7 +37,7 @@ exports.createSauce = (req, res, next) => {
       _id: req.params.id
     }).then(
       (sauce) => {
-        res.status(200).json(thing);
+        res.status(200).json(sauce);
       }
     ).catch(
       (error) => {
@@ -105,7 +105,7 @@ exports.createSauce = (req, res, next) => {
           sauce.deleteOne({_id: req.params.id}).then(
             () => {
               res.status(200).json({
-                message: 'Deleted!'
+                message: "Sauce deleted!"
               });
             }
           ).catch(
@@ -123,7 +123,7 @@ exports.createSauce = (req, res, next) => {
   exports.getAllSauces = (req, res, next) => {
     sauce.find().then(
         (sauce) => {
-            res.status(200).json(things);
+            res.status(200).json(sauce);
         }
     ).catch(
         (error) => {
